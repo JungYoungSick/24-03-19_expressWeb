@@ -59,20 +59,12 @@ app.post('/contactProc', (req, res) => {
 })
 
 app.get('/contactList', (req, res) => {
-  let sql = `select * from contact order by idx desc`
+  let sql = `select * from contact`
   connection.query(sql, function (err, results, fields) {
     if (err) throw err;
     res.render('contactList', { lists: results })
   })
-})
 
-app.get('/contactDelete', (req, res) => {
-  let idx = req.query.idx
-  let sql = `delete from contact where idx='${idx}'`
-  connection.query(sql, function (err, result) {
-    if (err) throw err
-    res.send("<script>alert('문의사항이 삭제되었습니다'); location.href='/contactList'</script>");
-  })
 })
 
 app.listen(port, () => {

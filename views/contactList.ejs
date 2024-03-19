@@ -1,0 +1,25 @@
+<%-include('header.ejs')%>
+
+<h1>문의받은 내용들</h1>
+<table border="1">
+  <tr>
+    <td>idx</td>
+    <td>성명</td>
+    <td>연락처</td>
+    <td>이메일</td>
+    <td>문의내용</td>
+  </tr>
+
+  <% lists.forEach(function(item){%>
+  <tr>
+    <td><%=item.idx%></td>
+    <td><%=item.name%></td>
+    <td><%=item.phone%></td>
+    <td><%=item.email%></td>
+    <td><%=item.memo%></td>
+    <td><a href="/contactDelete?idx=<%=item.idx%>">삭제</a></td>
+  </tr>
+  <% }) %>
+</table>
+
+<%-include('footer.ejs')%>
