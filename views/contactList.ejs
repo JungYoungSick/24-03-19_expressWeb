@@ -17,7 +17,13 @@
     <td><%=item.phone%></td>
     <td><%=item.email%></td>
     <td><%=item.memo%></td>
-    <td><a href="/contactDelete?idx=<%=item.idx%>">삭제</a></td>
+    <td>
+      <a
+        href="/contactDelete?idx=<%=item.idx%>"
+        onclick="return confirm('정말 삭제할까요?')"
+        >삭제</a
+      >
+    </td>
   </tr>
   <% }) %>
 </table>
