@@ -16,8 +16,23 @@ app.get('/profile', (req, res) => {
   res.render('profile') // ./views/index.ejs
 })
 
-app.get('/test', (req, res) => {
-  res.send('<h1>test</h1>')
+app.get('/map', (req, res) => {
+  res.render('map')
+})
+
+app.get('/contact', (req, res) => {
+  res.render('contact')
+})
+
+app.post('/contactProc', (req, res) => {
+  const name = req.body.name;
+  const phone = req.body.phone;
+  const email = req.body.email;
+  const memo = req.body.memo;
+
+  let a = ` ${name} ${phone} ${email} ${memo}`
+
+  res.send(a);
 })
 
 app.listen(port, () => {
