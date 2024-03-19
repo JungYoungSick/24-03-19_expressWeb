@@ -49,9 +49,11 @@ app.post('/contactProc', (req, res) => {
   const email = req.body.email;
   const memo = req.body.memo;
 
-  let sql = `insert into contact(name,phone,email, memo,regdate) values('${name}', '${phone}', '${email}','${memo}',now() )`
+  let sql = `insert into contact(name, phone, email, memo, regdate) values(?,?,?,?,now() )`
 
-  connection.query(sql, function (err, result) {
+  let values = [name, phone, email, memo];
+
+  connection.query(sql, values, function (err, result) {
     if (err) throw err
     console.log("자료 한개를 삽입하였습니다")
     res.send("<script>alert('문의사항이 등록되었습니다'); location.href='/'</script>");
